@@ -602,10 +602,10 @@ impl Parse for DsAttributeContents {
       let content = input;
       // parenthesized!(content in input);
 
-      let path = syn::Path::parse_mod_style(&content)?;
+      let path = syn::Path::parse_mod_style(content)?;
       let args = if content.peek(Token![:]) {
          content.parse::<Token![:]>()?;
-         TokenStream::parse(&content)?
+         TokenStream::parse(content)?
       } else {
          TokenStream::default()
       };
